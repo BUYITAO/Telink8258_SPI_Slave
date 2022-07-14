@@ -29,7 +29,7 @@ unsigned long firmwareVersion;
 //To make sure the communication between master and slave device is normal,the slave device should power on first.
 #define SPI_MASTER_DEVICE		1
 #define SPI_SLAVE_DEVICE		2
-#define SPI_DEVICE				SPI_MASTER_DEVICE
+#define SPI_DEVICE				SPI_SLAVE_DEVICE
 
 //3line mode
 #define SHARE_MODE				0
@@ -108,7 +108,7 @@ void user_init()
 	gpio_set_input_en(LED2 ,0);			//disable input
 	gpio_write(LED2, 0);              	//LED On
 
-	spi_slave_init((unsigned char)(CLOCK_SYS_CLOCK_HZ/(2*500000)-1),SPI_MODE0);
+	spi_slave_init((unsigned char)(CLOCK_SYS_CLOCK_HZ/(2*3000000)-1),SPI_MODE0);
 #if SHARE_MODE
 	spi_set_share_mode_en();  //Connect the MASTER's DI and the slave's DI if you want to use this mode
 #endif

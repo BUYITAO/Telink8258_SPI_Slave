@@ -83,6 +83,7 @@ void spi_slave_irq_handler(void)
 		   for(int i = 0;i<slave_rx_length;i++){
 			   slave_rxbuf[i]=buff[i];//Get data that Master SPI writes to Slave.
 		   }
+		   gpio_toggle(LED2);
 		 }
 	}
 	else{ spi_read_cnt++;}
